@@ -39,7 +39,7 @@ public class CreateManifest {
             // Parse named parameters
             List<String> rawParams = new ArrayList<>();
             rawParams.addAll(Arrays.asList(args).subList(3, args.length));
-            ParametersImpl params = new ParametersImpl(rawParams);
+            LauncherParams params = new LauncherParams(rawParams);
             Map<String, String> named = params.getNamed();
 
             if (named != null) {

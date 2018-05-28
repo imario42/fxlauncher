@@ -50,7 +50,7 @@ public class Launcher extends Application {
             runAndWait(() ->
             {
                 try {
-                    if (appClass.isAssignableFrom(Application.class)){
+                    if (Application.class.isAssignableFrom(appClass)){
                         Constructor<? extends Application> c = appClass.getConstructor();
                         app = c.newInstance();
                     }
@@ -232,11 +232,16 @@ public class Launcher extends Application {
 
     private void startApplication() throws Exception {
         if (app != null){
+            /*
+                At least with Java 10 app.getParameters().get*() throws a NPE and even if not, the returned Map is unmodifiable.
+                Disabled the parameter stuff at all. Thus, it is no longer possible to hand over parameters that way.
+
             final LauncherParams params = new LauncherParams(getParameters(), superLauncher.getManifest());
             app.getParameters().getNamed().putAll(params.getNamed());
             app.getParameters().getRaw().addAll(params.getRaw());
             app.getParameters().getUnnamed().addAll(params.getUnnamed());
-            
+            */
+
             // TODO: Could we set the name using the named parameters
             // PlatformImpl.setApplicationName(app.getClass());
             superLauncher.setPhase("Application Init");

@@ -1,7 +1,5 @@
 package fxlauncher;
 
-import com.sun.javafx.application.ParametersImpl;
-
 import javax.xml.bind.JAXB;
 import java.io.IOException;
 import java.net.URI;
